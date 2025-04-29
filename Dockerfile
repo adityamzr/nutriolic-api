@@ -1,18 +1,23 @@
-# Gunakan image resmi Bun
+# Gunakan image Bun
 FROM oven/bun:1.1
 
-# Set direktori kerja di container
+# Set direktori kerja
 WORKDIR /app
 
-# Salin semua file ke container
-COPY . .
+# Salin package.json, bun.lockb, prisma/schema.prisma dulu
+COPY package.json bun.lockb prisma ./ 
 
-# Install semua dependencies
+# Install dependencies lebih awal
 RUN bun install
+
+# Jalankan prisma generate
 RUN bunx prisma generate
 
-# Buka port 3000 (sesuaikan jika kamu pakai port lain)
+# Salin semua sisa file
+COPY . .
+
+# Expose port
 EXPOSE 3000
 
-# Jalankan aplikasi (ubah ke file utama kamu jika bukan index.ts atau app.ts)
+# Jalankan aplikasi
 CMD ["bun", "run", "start"]
