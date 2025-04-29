@@ -9,6 +9,7 @@ COPY . .
 
 # Install semua dependencies
 RUN bun install
+RUN bunx prisma generate
 
 # Buka port 3000 (sesuaikan jika kamu pakai port lain)
 EXPOSE 3000
