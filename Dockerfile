@@ -5,7 +5,7 @@ FROM oven/bun:1.1
 WORKDIR /app
 
 # Salin package.json, bun.lockb, prisma/schema.prisma dulu
-COPY package.json bun.lockb prisma ./ 
+COPY package.json prisma ./ 
 
 # Install dependencies lebih awal
 RUN bun install
