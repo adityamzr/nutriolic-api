@@ -12,7 +12,7 @@ RUN bun install
 
 # Jalankan prisma generate
 RUN bunx prisma generate
-RUN bunx prisma migrate
+RUN bunx prisma migrate dev
 
 # Salin semua sisa file
 COPY . .
