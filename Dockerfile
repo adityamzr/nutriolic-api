@@ -23,4 +23,4 @@ COPY --from=builder /app /app
 RUN npm install --only=production
 
 # Jalankan migrasi saat container start (opsional tapi umum digunakan)
-RUN npx prisma migrate deploy && node src/server.js
+CMD npx prisma migrate deploy && node src/server.js
