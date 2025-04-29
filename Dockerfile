@@ -1,24 +1,26 @@
-# Gunakan image Bun
-FROM oven/bun:1.1
+# Stage 1: Build dependencies
+FROM node:18-alpine AS builder
 
-# Set direktori kerja
 WORKDIR /app
 
-# Salin package.json, bun.lockb, prisma/schema.prisma dulu
-COPY package.json prisma ./ 
+COPY package*.json ./
+RUN npm install
 
-# Install dependencies lebih awal
-RUN bun install
-
-# Jalankan prisma generate
-RUN bunx prisma generate
-RUN bunx prisma migrate dev
-
-# Salin semua sisa file
 COPY . .
 
-# Expose port
-EXPOSE 3000
+# Generate Prisma Client (agar siap dipakai di production)
+RUN npx prisma generate
 
-# Jalankan aplikasi
-CMD ["bun", "run", "start"]
+# Stage 2: Production image
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy hanya hasil build dari builder
+COPY --from=builder /app /app
+
+# Install hanya production dependencies
+RUN npm install --only=production
+
+# Jalankan migrasi saat container start (opsional tapi umum digunakan)
+CMD npx prisma migrate deploy && node src/server.js
