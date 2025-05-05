@@ -7,7 +7,7 @@ exports.upsertNutrisiResponse = async (req, res) => {
   const {
     q1, q2, q3,
     carbs, proteins, fats, vitamins, minerals,
-    p4, p5, p6, p7, p8,
+    p4, p5, p6, p7, p8, p9,
     a1, a2, a3,
     conclusion
   } = req.body;
@@ -25,7 +25,7 @@ exports.upsertNutrisiResponse = async (req, res) => {
         data: {
           q1, q2, q3,
           carbs, proteins, fats, vitamins, minerals,
-          p4, p5, p6, p7, p8,
+          p4, p5, p6, p7, p8, p9,
           a1, a2, a3,
           conclusion
         }
@@ -41,7 +41,7 @@ exports.upsertNutrisiResponse = async (req, res) => {
           user_id: userId,
           q1, q2, q3,
           carbs, proteins, fats, vitamins, minerals,
-          p4, p5, p6, p7, p8,
+          p4, p5, p6, p7, p8, p9,
           a1, a2, a3,
           conclusion
         }

@@ -6,7 +6,7 @@ exports.upsertKaloriResponse = async (req, res) => {
   
   const {
     q1, q2, activities, q3, q4, q5, food_items, q6,
-    p4, p5, p6, p7, p8,
+    p4, p5, p6, p7, p8, p9,
     conclusion
   } = req.body;
 
@@ -21,7 +21,7 @@ exports.upsertKaloriResponse = async (req, res) => {
       result = await prisma.kaloriResponse.updateMany({
         data: {
           q1, q2, activities, q3, q4, q5, food_items, q6,
-          p4, p5, p6, p7, p8,
+          p4, p5, p6, p7, p8, p9,
           conclusion
         }
       })
@@ -35,7 +35,7 @@ exports.upsertKaloriResponse = async (req, res) => {
         data: {
           user_id: userId,
           q1, q2, activities, q3, q4, q5, food_items, q6,
-          p4, p5, p6, p7, p8,
+          p4, p5, p6, p7, p8, p9,
           conclusion
         }
       })

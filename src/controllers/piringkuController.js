@@ -6,7 +6,7 @@ exports.upsertPiringkuResponse = async (req, res) => {
   
   const {
     q1, q2, q3,
-    p4, p5, p6, p7, p8,
+    p4, p5, p6, p7, p8, p9,
     a1, a2, a3, a4,
     conclusion
   } = req.body;
@@ -22,7 +22,7 @@ exports.upsertPiringkuResponse = async (req, res) => {
       result = await prisma.piringkuResponse.updateMany({
         data: {
           q1, q2, q3,
-          p4, p5, p6, p7, p8,
+          p4, p5, p6, p7, p8, p9,
           a1, a2, a3, a4,
           conclusion
         }
@@ -37,7 +37,7 @@ exports.upsertPiringkuResponse = async (req, res) => {
         data: {
           user_id: userId,
           q1, q2, q3,
-          p4, p5, p6, p7, p8,
+          p4, p5, p6, p7, p8, p9,
           a1, a2, a3, a4,
           conclusion
         }
