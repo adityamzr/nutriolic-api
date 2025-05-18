@@ -36,7 +36,8 @@ exports.auth = async (req, res) => {
       return res.status(200).json({
         success: true,
         message: 'Account logged in successfully',
-        token
+        token,
+        is_admin: userExist.is_admin
       });
     }
     

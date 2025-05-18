@@ -11,6 +11,7 @@ const piringkuRoutes = require('./routes/piringku');
 const quiz = require('./routes/quiz');
 const game = require('./routes/game');
 const reflection = require('./routes/reflection');
+const users = require('./routes/users')
 
 const app = express();
 app.use(cors());
@@ -25,5 +26,6 @@ app.use('/api', piringkuRoutes);
 app.use('/api', quiz);
 app.use('/api', game);
 app.use('/api', reflection);
+app.use('/api', users);
 
 module.exports = app;
